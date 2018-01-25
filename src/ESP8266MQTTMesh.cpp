@@ -300,7 +300,7 @@ void ESP8266MQTTMesh::scan() {
         int rssi = WiFi.RSSI(i);
         dbgPrintln(EMMDBG_WIFI, "Found SSID: '" + WiFi.SSID(i) + "' BSSID '" + WiFi.BSSIDstr(i) + "'" + "RSSI: " + String(rssi));
         if (IS_GATEWAY) {
-            network_idx = match_networks(WiFi.SSID().c_str(), WiFi.BSSIDstr(i).c_str());
+            network_idx = match_networks(WiFi.SSID(i).c_str(), WiFi.BSSIDstr(i).c_str());
         }
         if(network_idx == NETWORK_MESH_NODE) {
             if (! WiFi.SSID(i).length()) {
